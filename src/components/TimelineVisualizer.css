@@ -1,0 +1,245 @@
+.timeline-visualizer {
+  width: 100%;
+  padding: 0;
+  background: transparent;
+}
+
+.timeline-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.timeline-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.timeline-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  min-height: 60px;
+}
+
+.timeline-label {
+  width: 200px;
+  flex-shrink: 0;
+  padding-right: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.timeline-label .city-name {
+  font-weight: 700;
+  color: var(--color-text-primary);
+  font-size: 1rem;
+}
+
+.timeline-label .timezone-info {
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+}
+
+.timeline-label .overlap-label {
+  font-weight: 700;
+  color: var(--color-success-dark);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.timeline-label .overlap-label::before {
+  content: '✓';
+  font-size: 1.25rem;
+}
+
+.timeline-track {
+  flex: 1;
+  position: relative;
+  height: 48px;
+  background: var(--color-gray-100);
+  border-radius: var(--radius-md);
+  overflow: visible;
+  border: 2px solid var(--color-gray-200);
+}
+
+.timeline-block {
+  position: absolute;
+  height: 100%;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-slow);
+  animation: slideIn 0.5s ease-out;
+}
+
+.timeline-block:hover {
+  transform: scaleY(1.1);
+  z-index: 10;
+}
+
+.city-a-block {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border: 2px solid var(--color-primary-dark);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.city-b-block {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+  border: 2px solid var(--color-secondary-dark);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+.overlap-block {
+  background: linear-gradient(135deg, var(--color-success) 0%, var(--color-success-dark) 100%);
+  border: 3px solid var(--color-success-dark);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.overlap-block:hover {
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.5);
+}
+
+.block-label {
+  color: white;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  padding: 0 var(--spacing-sm);
+  letter-spacing: 0.025em;
+}
+
+.no-overlap-indicator {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+  font-size: 0.875rem;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.no-overlap-indicator::before {
+  content: '⚠️ ';
+  margin-right: var(--spacing-xs);
+}
+
+.overlap-row {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 2px solid var(--color-gray-200);
+}
+
+.timeline-markers {
+  display: flex;
+  align-items: flex-start;
+  margin-top: var(--spacing-sm);
+}
+
+.timeline-markers .timeline-track {
+  height: 30px;
+  background: transparent;
+  border: none;
+}
+
+.time-marker {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-marker::before {
+  content: '';
+  width: 2px;
+  height: 10px;
+  background: var(--color-gray-400);
+  margin-bottom: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+}
+
+.marker-label {
+  font-size: 0.6875rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+  .timeline-label {
+    width: 140px;
+    padding-right: var(--spacing-md);
+  }
+
+  .timeline-label .city-name {
+    font-size: 0.9375rem;
+  }
+
+  .timeline-label .timezone-info {
+    font-size: 0.6875rem;
+  }
+
+  .timeline-track {
+    height: 40px;
+  }
+
+  .block-label {
+    font-size: 0.75rem;
+  }
+
+  .marker-label {
+    font-size: 0.625rem;
+  }
+
+  .timeline-header h3 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-label {
+    width: 100px;
+    padding-right: var(--spacing-sm);
+  }
+
+  .timeline-label .city-name {
+    font-size: 0.875rem;
+  }
+
+  .timeline-label .timezone-info {
+    display: none;
+  }
+
+  .timeline-track {
+    height: 36px;
+  }
+
+  .block-label {
+    font-size: 0.6875rem;
+    padding: 0 var(--spacing-xs);
+  }
+
+  .marker-label {
+    font-size: 0.5625rem;
+  }
+
+  .timeline-header h3 {
+    font-size: 1.125rem;
+  }
+
+  /* Show fewer time markers on very small screens */
+  .time-marker:nth-child(2n) .marker-label {
+    display: none;
+  }
+}
